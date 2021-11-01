@@ -1,0 +1,6 @@
+<button
+    mat-icon-button
+    [matTooltip]="'Toggle Fullscreen'"
+    (click)="toggleFullscreen()">
+    <mat-icon >{{!isFullscreen() ? 'fullscreen' : 'fullscreen_exit' }}</mat-icon>
+</button>

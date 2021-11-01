@@ -1,0 +1,27 @@
+<div class="relative flex flex-0 items-center justify-between w-full h-14 px-4 md:px-6 z-49 bg-white border-t text-black border-gray-200 dark:shadow-none dark:border-b dark:bg-transparent dark:text-white">
+    <div>
+        <span class="font-medium text-secondary hidden lg:flex">Brainshark Timer/StopWatch &copy; 2021</span>
+    </div>
+    <div class="flex space-x-2">
+        <div class="flex items-center justify-center" *ngIf="showThemeToggle">
+            <!-- label -->
+            <div class="mr-3 text-gray-700 font-medium dark:text-gray-300">
+            Dark Mode
+            </div>
+            <label for="themeMode" class="flex items-center cursor-pointer">
+                <!-- toggle -->
+                <div class="relative">
+                <!-- input -->
+                <input type="checkbox" #themeMode id="themeMode" [checked]="isDarkMode" class="sr-only" (change)="onToggleMode(themeMode.checked ? 'dark' : 'light')">
+                <!-- line -->
+                <div class="block bg-gray-600 w-10 h-6 rounded-full"></div>
+                <!-- dot -->
+                <div class="dot absolute left-1 top-1 bg-gray-900 w-4 h-4 rounded-full transition"></div>
+                </div>
+            </label>
+        </div>
+        <div class="flex" *ngIf="isFullscreenAllowed">
+            <bs-fullscreen class="hidden md:block"></bs-fullscreen>
+        </div>
+    </div>
+</div>

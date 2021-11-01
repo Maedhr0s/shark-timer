@@ -13,11 +13,11 @@ The only requirement is that it maintains basic the functionality of a timer/sto
 
 ### Timer
 
-![page image](timer.gif?raw=true)
+![page image](timer.jpg?raw=true)
 
 ### Stopwatch
 
-![page image](stopwatch.gif?raw=true)
+![page image](stopwatch.jpg?raw=true)
 
 ## Getting started
 
@@ -33,7 +33,27 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
+### Angualar CLI.
 Run `npm run build` or `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+### Docker CLI
+Run `docker build -t brainshark/shark-timer-image:latest  .`
+
+### Docker Composer
+Run `docker-compose build`
+
+## Running the application
+
+### Angular CLI
+Run `ng serve --open --port=<portnumber>`
+
+### Docker CLI
+Run `docker run -d -p <port number>:80 brainshark/shark-timer-image:latest`
+
+### Docker Composer
+Run `docker-compose up`
+
+## Make sure docker is installed when running the application with docker.
 
 ## Running unit tests
 
@@ -46,3 +66,4 @@ Run `npm run e2e` or `ng e2e` to execute the end-to-end tests via [Protractor](h
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+

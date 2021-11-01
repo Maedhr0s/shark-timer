@@ -1,0 +1,99 @@
+<mat-progress-bar [mode]="'determinate'" *ngIf="percent" [value]="percent"></mat-progress-bar>
+<div class="relative h-full flex flex-auto bg-white items-center justify-center dark:bg-transparent" >
+    <bs-card
+        class="flex flex-col"
+        [flippable]="true"
+        *ngIf="timerService.mode == 'timer'"
+        #bsCard>
+        <ng-container bsCardFront>
+            <div class="text-6xl text-center flex p-10 items-center justify-center  rounded-lg" (click)="bsCard.face = 'back'; onStartSetTime()">
+                <ng-container *ngTemplateOutlet="timerView"></ng-container>
+            </div>
+        </ng-container>
+        <ng-container bsCardBack>
+            <div class="flex flex-col flex-auto px-8 py-6 pt-3">
+                <div class="text-6xl text-center flex p-10 items-center justify-center rounded-lg">
+                    <ng-container *ngTemplateOutlet="timerInput"></ng-container>
+                    <div class="flex absolute bottom-8">
+                        <button mat-icon-button (click)="bsCard.face = 'front'" class="flex uppercase text-sm items-center space-x-2">
+                            <mat-icon class="text-3xl">timer</mat-icon><span>Set</span>
+                        </button>       
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </bs-card>
+    <div class="text-6xl text-center flex p-10 items-center justify-center  rounded-lg" (click)="onStartSetTime()" *ngIf="timerService.mode == 'stop-watch'">
+        <ng-container *ngTemplateOutlet="timerView"></ng-container>
+    </div>
+</div>
+
+
+<!-- Template for timer view -->
+<ng-template #timerView>
+    <ng-container *ngIf="hoursDigitTwo || hoursDigitOne">
+        <div class="w-24 mx-1 p-2 bg-white text-red-500 rounded-lg">
+            <div class="font-mono leading-none">{{hoursDigitTwo}}{{hoursDigitOne}}</div>
+            <div class="font-mono uppercase text-sm leading-none">Hours</div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="minutesDigitTwo || minutesDigitOne">
+        <div class="w-24 mx-1 p-2 bg-white text-red-500 rounded-lg">
+            <div class="font-mono leading-none">{{minutesDigitTwo}}{{minutesDigitOne}}</div>
+            <div class="font-mono uppercase text-sm leading-none">Minutes</div>
+        </div>
+    </ng-container>
+    <div class="text-2xl mx-1 uppercase text-gray-500" *ngIf="minutesDigitTwo || minutesDigitOne">and</div>
+    <ng-container>
+        <div class="w-24 mx-1 p-2 bg-white text-red-500 rounded-lg">
+            <div class="font-mono leading-none">{{secondsDigitTwo}}{{secondsDigitOne}}</div>
+            <div class="font-mono uppercase text-sm leading-none">Seconds</div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="showHundriths">
+        <div class="w-12 h-10 mx-1 p-2 bg-white text-red-500 rounded-lg text-3xl mt-7">
+            <div class="font-mono leading-none">{{cSecondsDigitTwo}}{{cSecondsDigitOne}}</div>
+        </div>
+    </ng-container>
+</ng-template>
+
+<!-- Template for Timer Inputs -->
+<ng-template #timerInput>
+    <div class="w-24 mx-1 p-2 bg-white text-red-500 rounded-lg" >
+        <div class="font-mono leading-none">
+            <input matInput
+                class="appearance-none border-0 w-16 h-10 leading-tight ml-5"
+                type="number"
+                placeholder="Hours"
+                value="0"
+                [(ngModel)]="inputHours"
+                (input)="onInputChange(inputHours, inputMinutes, inputSeconds)">
+        </div>
+        <div class="font-mono uppercase text-sm leading-none">Hours</div>
+    </div>
+    <div class="w-24 mx-1 p-2 bg-white text-red-500 rounded-lg">
+        <div class="font-mono leading-none">
+            <input matInput
+            class="appearance-none border-0 w-16 h-10 leading-tight ml-5"
+            type="number"
+            placeholder="Hours"
+            value="0"
+            [(ngModel)]="inputMinutes"
+            (input)="onInputChange(inputHours, inputMinutes, inputSeconds)">
+        </div>
+        <div class="font-mono uppercase text-sm leading-none">Minutes</div>
+    </div>
+    <div class="text-2xl mx-1 uppercase text-gray-500">and</div>
+    <div class="w-24 mx-1 p-2 bg-white text-red-500 rounded-lg">
+        <div class="font-mono leading-none">
+            <input matInput
+            class="appearance-none border-0 w-16 h-10 leading-tight ml-5"
+            type="number"
+            placeholder="Hours"
+            value="0"
+            [(ngModel)]="inputSeconds"
+            (input)="onInputChange(inputHours, inputMinutes, inputSeconds)">
+        </div>
+        <div class="font-mono uppercase text-sm leading-none">Seconds</div>
+    </div>
+</ng-template>

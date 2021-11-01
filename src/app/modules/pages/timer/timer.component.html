@@ -1,0 +1,6 @@
+<bs-time-view 
+    [percent]="(percent$ | async)!" 
+    [time]="(time$ | async)!"
+    [showHundriths]="false"
+    (setTime)="setTime($event)" 
+    [canSetTime]="true"></bs-time-view>

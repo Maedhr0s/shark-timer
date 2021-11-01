@@ -1,0 +1,11 @@
+{
+  "applicationCode": "bs-timer",
+  "applicationTitle": "Brainshark Timer",
+  "appConfig": {
+    "theme": "dark",
+    "themeNote": "Valid values are 'light' and 'dark'.  Note: theming still buggy, it reset to default when you navigate.  Need to save the Dark Mode switch value to localstorage",
+    "showThemeToggle": true,
+    "allowFullscreen": true,
+    "alarmEnabled": true
+  }
+}

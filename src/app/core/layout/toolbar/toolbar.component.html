@@ -1,0 +1,7 @@
+<div class="relative flex items-center h-16 px-4 md:px-6 z-49 shadow bg-white border-b text-black border-gray-200 dark:shadow-none dark:border-b dark:bg-transparent dark:text-white">
+    <button mat-icon-button (click)="onToggleNavigation()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <ng-content select=".toolbarTitle"></ng-content>
+    <ng-content select=".toolbarControls"></ng-content>
+</div>

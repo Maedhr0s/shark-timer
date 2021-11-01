@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+    angular-service:
+       container_name: shark-timer
+       build: .
+       ports:
+           - "9000:80"

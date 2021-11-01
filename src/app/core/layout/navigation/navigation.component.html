@@ -1,0 +1,41 @@
+<div class="h-full shadow bg-white border-b text-black border-gray-200 dark:shadow-none dark:border-b dark:bg-transparent dark:text-white">
+    <ng-container>
+        <div class="flex items-center w-full p-4 pl-6 border-b border-gray-200">
+            <div class="flex items-center justify-center">
+                <img
+                    class="w-full"
+                    src="assets/images/logo/bnsk_btc_logo_web.svg">                 
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngFor="let item of navigation">
+        <ng-container>
+            <div class="navigation-item-wrapper">
+                <a class="navigation-item"
+                    [routerLink]="[item.link]"
+                    [routerLinkActive]="'navigation-item-active'">
+                    <ng-container *ngIf="item.icon">
+                        <mat-icon>{{item.icon}}</mat-icon>
+                    </ng-container>
+                
+                    <!-- Title & Subtitle -->
+                    <div class="navigation-item-title-wrapper ml-5">
+                        <div class="navigation-item-title">
+                            <span>
+                                {{item.title}}
+                            </span>
+                        </div>
+                        <ng-container *ngIf="item.subtitle">
+                            <div class="navigation-item-subtitle">
+                                <span>
+                                    {{item.subtitle}}
+                                </span>
+                            </div>
+                        </ng-container>
+                    </div>
+                </a>
+            </div>
+        </ng-container>    
+    </ng-container>
+</div>
